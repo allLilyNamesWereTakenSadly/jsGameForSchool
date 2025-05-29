@@ -126,7 +126,6 @@ function lanes(){//this will be used to display each lane in the game
     }
     
 };
-//double checked function parameters (as they are similar to java methods) with https://www.w3schools.com/js/js_functions.asp as they are different as you do not have to state which type the variable is
 function playerIcon(y){//this will be used to control the players y-coord position and icon
   //creating the car icon  
   if (vehicle === "car"){
