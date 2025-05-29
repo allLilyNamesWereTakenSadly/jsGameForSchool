@@ -23,13 +23,15 @@ var sObsXPos = [];
 var msg = "";
 var endMsg = "";
 //functions work differently for different versions https://www.w3schools.com/js/js_functions.asp
-function canvas(){
+//https://www.geeksforgeeks.org/p5-js-setup-function/
+function setup(){
   createCanvas(400,400);//this is the size of kahn academys canvas
 }
 function displayMenu(){
     score = 0;
     background(255, 219, 233);
     textSize(40);   
+    fill(255,255,255);
     text("Game!!",110,140);
     
     textSize(25);
