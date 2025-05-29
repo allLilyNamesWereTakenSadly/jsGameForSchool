@@ -22,9 +22,11 @@ var sObsLane = [];
 var sObsXPos = [];
 var msg = "";
 var endMsg = "";
-
-
-var displayMenu = function(){
+//functions work differently for different versions https://www.w3schools.com/js/js_functions.asp
+function canvas(){
+  createCanvas(400,400);//this is the size of kahn academys canvas
+}
+function displayMenu(){
     score = 0;
     background(255, 219, 233);
     textSize(40);   
@@ -35,7 +37,7 @@ var displayMenu = function(){
     textSize(20);
     text("use up and down arrow or w and s to play",10,325);
 };
-var displaySelect = function(){
+function displaySelect(){
     background(181, 223, 255);
     textSize(30);
     text("Selections!!",95,50);
@@ -77,7 +79,7 @@ var displaySelect = function(){
     
     //if vehicle status = yes if terrain status = yes enter = "click to enter!"
 };
-var lanes = function(){
+function lanes(){
     if(terrain === "mueseum"){
     background(217, 240, 255);
     fill(236, 191, 255);
@@ -117,7 +119,7 @@ var lanes = function(){
     
 };
 //double checked function parameters (as they are similar to java methods) with https://www.w3schools.com/js/js_functions.asp
-var playerIcon = function(y){
+function playerIcon(y){
     if (vehicle === "car"){
         fill(227, 32, 97);
         rect(60,y,40,40);
@@ -131,7 +133,7 @@ var playerIcon = function(y){
     }
 };
 
-var showObs = function(){
+function showObs(){
     //var emptySpace = true;
    if (scenes === "game"){
     if (sObs.length < 2){
@@ -195,7 +197,7 @@ var showObs = function(){
    }
 
 };
-var hiScore = function(){
+function hiScore(){
 fill(255, 255, 255);
 text(score,50,50);   
 var newhiScore = 0;
@@ -207,7 +209,7 @@ if (score > highScore){
 }
     
 };
-var displayGame = function(){
+function displayGame(){
     background(207, 252, 255);
     lanes();
     showObs();
@@ -220,7 +222,7 @@ var displayGame = function(){
     // playerIcon(playerY);
 // }
 };
-var displayOver = function(){
+function displayOver(){
     background(255, 25, 117);
     if (terrain === "mueseum"){
         endMsg = "You knocked over a\nmultimillion dollar artifact\nhave fun paying the fine!";
@@ -243,7 +245,7 @@ var displayOver = function(){
     fill(83, 230, 220);
     text("Click to Play Again",72,366);
 };
-var displaymsg = function(){
+function displaymsg(){
     background(251, 239, 252);
     if (terrain === "mueseum"){
         msg = "You have stolen a billion dollar artifact\nto avoid paying more fees\ndon't break anything while escaping";
@@ -256,7 +258,7 @@ var displaymsg = function(){
     }
     text(msg + "\n Click to confirm",50,50);
 };
-var reset = function(){
+function reset(){
     playerY = 1;
     score = 0;
     sObs = [];
@@ -269,7 +271,7 @@ var reset = function(){
 };
 //so this will like set up changing the scenes 
 
-draw = function(){
+function draw(){
     if (scenes === "menu"){
         displayMenu();
     }else if (scenes === "select"){
@@ -290,7 +292,7 @@ draw = function(){
     }
 };
 //to make a key pressed function //https://p5js.org/tutorials/organizing-code-with-functions/
-keyPressed = function(){
+function keyPressed(){
     //keycode from https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript except for this the e. isnt needed because im not checking for a specific function method
     if (scenes === "game"){
         if ((keyCode === 38 || keyCode === 87) && playerY > 0){
@@ -302,7 +304,7 @@ keyPressed = function(){
    
 };
 
-mouseClicked = function(){
+function mouseClicked(){
         if (scenes === "menu"){
         scenes = "select";
         }else if (scenes === "select"){
