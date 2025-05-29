@@ -1,0 +1,13 @@
+# https://www.youtube.com/watch?v=ir7F2yxSGSY
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Game Name Here</title>
+#https://p5js.org/examples/ 
+  <script src="https://cdnjs.cloudfare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+</body>
+</html>
