@@ -6,7 +6,7 @@ var vehicle = "";//this will be used to select a vehicle, it will be empty to sh
 var terrain = "";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected
 var playerY = 1;//this will be used to see which lane the player is on, it will start at 1 as arrays start counting at 0, so the player will spawn in the middle
 //arrays are used as they are similar to java arrays however, I double checked with https://www.w3schools.com/js/js_arrays.asp
-var lanesY = [150,250,350];//these will be the points of the lanes that will be used
+var lanesY = [200,250,300];//these will be the points of the lanes that will be used
 //var speed = 5;//this will be used to control the speed of the obstacles
 //var vspeed = 2;
 //var lane = 1; //w
