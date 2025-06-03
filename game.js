@@ -4,7 +4,7 @@ Create a game which will go through different scenes where the gameplay is contr
 //*IF THE BOXES ARE ON THE LANES LINES PLEASE REFRESH
 var scenes = "menu";//this will change scenes throughout the game, it will start at menu as it is the first scene to be shown
 var vehicle = "";//this will be used to select a vehicle, it will be empty to show whether a vehicle has been selected
-var terrain = "";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected
+var terrain = "museum";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected
 var playerY = 1;//this will be used to see which lane the player is on, it will start at 1 as arrays start counting at 0, so the player will spawn in the middle
 //arrays are used as they are similar to java arrays however, I double checked with https://www.w3schools.com/js/js_arrays.asp
 var lanesY = [150,250,350];//these will be the points of the lanes that will be used
@@ -177,7 +177,7 @@ function lanes(){//this will be used to display each lane in the game
     }
     }
     
-    else if(terrain === "scary"){
+    else if(terrain === "haunted"){
     background(0, 82, 78);
     fill(242, 255, 255);
     ellipse(350,35,75,75);
@@ -227,14 +227,14 @@ function lanes(){//this will be used to display each lane in the game
     stroke(0, 0, 0);
 };
 function playerIcon(y){//this will be used to control the players y-coord position and icon
-  //creating the car icon  
-  if (vehicle === "car"){
+  //creating the red icon  
+  if (vehicle === "red"){
         fill(227, 32, 97);
         rect(60,y,40,40);//creating the icon so that x = 60 so that the vehicle stays in the same place while not looking idle and y to change based on later user input
-    }else if (vehicle === "motorcycle"){//creating icon so that vehicle can be motorcycle
+    }else if (vehicle === "blue"){//creating icon so that vehicle can be blue
         fill(29, 235, 201);
         rect(60,y,40,40);
-    }else if (vehicle === "skateboard"){//creating vehicle so that it is a skateboard
+    }else if (vehicle === "yellow"){//creating vehicle so that it is a yellow
         fill(255, 240, 74);
         rect(60,y,40,40);
     }
@@ -280,7 +280,7 @@ function showObs(){//to show the obstacles multiple times throughout the game
             rect(sObsXPos[i],y,40,40);
        }
        }
-       if (terrain === "scary"){//if obstacle is haunted theme
+       if (terrain === "haunted"){//if obstacle is haunted theme
        if (sObs[i] === "ob1"){//checking if it is first obstacle and making it
             fill(28, 87, 31);
             rect(sObsXPos[i],y,40,40);
@@ -342,7 +342,7 @@ function displayOver(){//to display the game over scene
         endMsg = "You ruined a\nmultimillion dollar painting\nhave fun paying the fine!";//displaying an ending message for the museum terrain
     }else if (terrain === "greece"){//checking if terrain is Greece
         endMsg = "you desynced :(\nthe flow of time has changed\nsocrates is now a soundcloud rapper\nwith 2 followers\n";//displaying ending message for this terrain
-    }else if (terrain === "scary"){//if the terrain chosen was the haunted terrain
+    }else if (terrain === "haunted"){//if the terrain chosen was the haunted terrain
         endMsg = "It's alive! It's alive!\nthou hast awoken the \nmonster\nthou shalt feel its wrath";//displaying the message for this terrain
     }
     textSize(30);
@@ -367,7 +367,7 @@ function displaymsg(){//to display the message scene to provide context for each
     else if (terrain === "greece"){//if terrain is greece
 msg = "You traveled back in time \ncongratulations!\nembark on an epic Odyssey\n beware: do not disrupt the \nspace time continuum \nby touching objects\neven touching a rock can change\nthe universe";//showing corresponding message
     }
-    else if (terrain === "scary"){//if terrain is haunted
+    else if (terrain === "haunted"){//if terrain is haunted
         msg = "Thou hast been located \nin a haunted forest\nthou must not strike any bushes\nor suspicious objects\nlest they be monsters in disguise";//showing haunted terrain message
     }
   textSize(20);
@@ -422,12 +422,12 @@ function mouseClicked(){//to check if mouse has been clicked
         if (scenes === "menu"){//checking if scenes is the menu scene and mouse has been clicked
         scenes = "select";//then it will move to the select menu
         }else if (scenes === "select"){//to check if scene is on the selections menu and the position of the mouse
-            if (mouseX > 30 && mouseX < 115 && mouseY > 100 && mouseY < 185){//if mouse is in range of the car box
-                vehicle = "car";//making vehicle car
-            }else if (mouseX > 130 && mouseX < 215 && mouseY > 100 && mouseY < 185){//if mouse is in range or motorcycle box
-                 vehicle = "motorcycle";//making vehicle motorcycle
-            }else if (mouseX > 230 && mouseX < 315 && mouseY > 100 && mouseY < 185){//if mouse was clicked in range of skateboard box
-                 vehicle = "skateboard";//making vehicle skateboard as it is what was clicked
+            if (mouseX > 30 && mouseX < 115 && mouseY > 100 && mouseY < 185){//if mouse is in range of the red box
+                vehicle = "red";//making vehicle red
+            }else if (mouseX > 130 && mouseX < 215 && mouseY > 100 && mouseY < 185){//if mouse is in range or blue box
+                 vehicle = "blue";//making vehicle blue
+            }else if (mouseX > 230 && mouseX < 315 && mouseY > 100 && mouseY < 185){//if mouse was clicked in range of yellow box
+                 vehicle = "yellow";//making vehicle yellow as it is what was clicked
             }
             
             if (mouseX > 30 && mouseX < 115 && mouseY > 220 && mouseY < 305){//checking if mouse was clicked in range of museum box
@@ -435,7 +435,7 @@ function mouseClicked(){//to check if mouse has been clicked
             }else if (mouseX > 130 && mouseX < 215 && mouseY > 220 && mouseY < 305){//checking if mouse was clicked in range of greece
                 terrain = "greece";//setting terrain as greece
             }else if (mouseX > 230 && mouseX < 315 && mouseY > 220 && mouseY < 305){//checking if mouse was clicked in range of haunted terrain
-                terrain = "scary";//setting terrain as haunted terrain
+                terrain = "haunted";//setting terrain as haunted terrain
             }
             if (enter === "enter"){//checking if user has finalized their choice of both terrain and vehicle
             if (mouseX > 38 && mouseX < 312 && mouseY > 323 && mouseY < 377){//checking if mouse was clicked in range of enter buttton
