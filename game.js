@@ -1,23 +1,16 @@
 /*Lily Swan-Tuomi
 May 29 2025
 Create a game which will go through different scenes where the gameplay is controlling a vehicle with different options for vehicle and terrain*/
+//*IF THE BOXES ARE ON THE LANES LINES PLEASE REFRESH
 var scenes = "menu";//this will change scenes throughout the game, it will start at menu as it is the first scene to be shown
 var vehicle = "";//this will be used to select a vehicle, it will be empty to show whether a vehicle has been selected
 var terrain = "";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected
 var playerY = 1;//this will be used to see which lane the player is on, it will start at 1 as arrays start counting at 0, so the player will spawn in the middle
 //arrays are used as they are similar to java arrays however, I double checked with https://www.w3schools.com/js/js_arrays.asp
 var lanesY = [150,250,350];//these will be the points of the lanes that will be used
-//var speed = 5;//this will be used to control the speed of the obstacles
-//var vspeed = 2;
-//var lane = 1; //w
 var enter = "";//this will be used to check if player has selected both a vehicle and a terrain, checking the enter status of the game as both must be selected
 var score = 0;//this will be used to count the score of the player per each game
 var highScore = 0;//this will be used to create a high score
-//var obstacles = [];//
-//var  obsxPos;
-//var obsYPos;
-//var rNum;
-//var obs = [];
 var sObs = [];//(selected obstacle) to show which obstacle has been selected randomly to be displayed 
 var sObsLane = [];//to find and control the lane of the obstacle
 var sObsXPos = [];//to find the x-coord of the obstacle to check for collision with the player
@@ -29,7 +22,6 @@ function setup(){//this is a function to set up the canvas on which the game wil
   createCanvas(400,400);//this is the size of kahn academys canvas so it should also be the size of this canvas
 }
 function displayMenu(){//this will be used to display the menu (first scene) of the game, when called
-   // score = 0;//this will reset
     background(255, 219, 233);//setting the background color
     textSize(40); //creating the text size for what is to be shown until the text size should change
     fill(255,255,255);//creating color for the aforementioned text
