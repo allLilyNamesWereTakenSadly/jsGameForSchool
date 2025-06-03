@@ -16,6 +16,8 @@ var sObsLane = [];//to find and control the lane of the obstacle
 var sObsXPos = [];//to find the x-coord of the obstacle to check for collision with the player
 var msg = "";//to display a message for context at the beggining of each game
 var endMsg = "";//to display and ending message when game is over
+var BgObjx = 400;
+var objx = [70,300]; 
 //functions work differently for different versions https://www.w3schools.com/js/js_functions.asp
 //https://www.geeksforgeeks.org/p5-js-setup-function/
 function setup(){//this is a function to set up the canvas on which the game will be displayed
@@ -36,37 +38,38 @@ function displaySelect(){//to display a menu for user to select vehicle and terr
     background(181, 223, 255);//changing background colour to further indicate change
     textSize(30);//setting text size
     text("Selections!!",95,50);//indicating what scene the user is on and hinting at what user should do
-
-  //creating box to choose car
+    textSize(20);
+    text("pick a player colour and track!",25,79);
+  //creating box to choose red
     fill(255, 242, 255);
     rect(30,100,85,85);
     fill(255, 194, 194);
-    text("Car",48,155);
-    //box to choose motorcycle
+    text("Red",48,155);
+    //box to choose blue
     fill(255, 242, 255);
     rect(130,100,85,85);
     fill(255, 194, 194);
-    text("M",150,157);
-    //box to choose skateboard
+    text("Blue",150,157);
+    //box to choose yellow
     fill(255, 242, 255);
     rect(230,100,85,85);
     fill(255, 194, 194);
-    text("Sk8",250,157);
+    text("Yellow",250,157);
     //box to choose museum heistas terrain theme
     fill(255, 242, 255);
     rect(30,220,85,85);
     fill(255, 194, 194);
-    text("Mu",48,273);
-    //box to choose Assassins Creed: Odyssey terrain theme
+    text("Museum",35,273);
+    //box to choose Odyssey terrain theme
     fill(255, 242, 255);
     rect(130,220,85,85);
     fill(255, 194, 194);
-    text("ac",133,273);
+    text("Greece",133,273);
     //box to choose haunted terrain theme
     fill(255, 242, 255);
     rect(230,220,85,85);
     fill(255, 194, 194);
-    text("scary",240,273);
+    text("Forest",240,273);
     //box to show whether user has chosen both terrain and vehicle or still needs to do so based on prompt
     fill(255, 242, 255);
     rect(38,323,274,54);
@@ -75,48 +78,153 @@ function displaySelect(){//to display a menu for user to select vehicle and terr
     
 };
 function lanes(){//this will be used to display each lane in the game
-  //making museum themed lanes and background 
-    if(terrain === "museum"){
-    background(217, 240, 255);//making background
-    //first lane
-    fill(236, 191, 255);
-    rect(0,230,400,80);
-    
-    //second lane
-    fill(236, 191, 255);
-    rect(0,311,400,80);
-      
-    //third lane
-    fill(236, 191, 255);
-    rect(0,150,400,80);
-    }
-  //making ancient Greece themed lanes individually
-    if(terrain === "greece"){
-        background(0, 116, 232);
-    fill(191, 255, 254);
+   if(terrain === "mueseum"){
+    background(217, 240, 255);
+    fill(247, 253, 255);
     rect(0,230,400,80);
     
     
-    fill(191, 255, 254);
+    fill(247, 253, 255);
     rect(0,311,400,80);
     
-    fill(191, 255, 254);
+    fill(247, 253, 255);
     rect(0,150,400,80);
+    
+
+    for (var i = 0; i < objx.length; i++){
+        objx[i] -= 3;
+        if(i === 0){
+            fill(237, 250, 255);
+            rect(objx[i]+ 100,0,50,150);
+            fill(0, 55, 173);
+            stroke(140, 105, 8);
+            strokeWeight(5);
+            rect(objx[i],50,75,75);
+            strokeWeight(1);
+            fill(0, 17, 84);
+            rect(objx[i],75,20,50);
+            fill(252, 225, 75);
+            ellipse(objx[i] + 50,75,20,20);
+        }else{
+            fill(237, 250, 255);
+            rect(objx[i]+ 100,0,50,150);
+            fill(145, 158, 0);
+            stroke(140, 105, 8);
+            strokeWeight(5);
+            rect(objx[i],50,75,75);
+            strokeWeight(1);
+            fill(255, 239, 219);
+            ellipse(objx[i] + 30,80,50,50);
+            fill(82, 48, 0);
+             ellipse(objx[i] + 30,65,40,20);
+              ellipse(objx[i] + 50,90,10,60);
+              ellipse(objx[i] + 10,90,10,60);
+              fill(139, 168, 52);
+              ellipse(objx[i] + 30,115,40,20);
+        }
+        if (objx[i] < -50){
+            objx[i] = 400;
+        }
     }
-  //making haunted themed lanes individually
-    if(terrain === "scary"){
-    background(0, 52, 143);
-    fill(255, 219, 242);
+    }
+    else if(terrain === "greece"){
+        background(255, 240, 209);
+    fill(235, 230, 191);
     rect(0,230,400,80);
     
     
-    fill(255, 219, 242);
+    fill(235, 230, 191);
     rect(0,311,400,80);
     
-    fill(255, 219, 242);
+    fill(235, 230, 191);
     rect(0,150,400,80);
+    
+    
+    for (var i = 0; i < objx.length; i++){
+        objx[i] -= 3;
+        
+        if(i === 0){
+         fill(161, 199, 255);
+            rect(objx[i],50,150,100); 
+            noStroke();
+            ellipse(objx[i] + 80,50,150,50);
+            stroke(0, 0, 0);
+            strokeWeight(1);
+            fill(0, 97, 224);
+            rect(objx[i],100,150,50);
+            fill(246, 247, 232);
+            rect(objx[i]+80,50,5,50);
+            rect(objx[i]+95,50,5,50);
+            rect(objx[i]+110,50,5,50);
+            rect(objx[i]+125,50,5,50);
+            rect(objx[i]+140,50,5,50);
+            rect(objx[i]+80,35,62,17);
+            
+        }else{
+             fill(161, 199, 255);
+            rect(objx[i],50,150,100); 
+            noStroke();
+            ellipse(objx[i] + 80,50,150,50);
+            stroke(0, 0, 0);
+            strokeWeight(1);
+            fill(0, 97, 224);
+            rect(objx[i],100,150,50); 
+            
+        }
+        if (objx[i] < -50){
+            objx[i] = 400;
+        }
+    }
     }
     
+    else if(terrain === "scary"){
+    background(0, 82, 78);
+    fill(242, 255, 255);
+    ellipse(350,35,75,75);
+    fill(106, 153, 137);
+    rect(0,230,400,80);
+    
+    
+    fill(106, 153, 137);
+    rect(0,311,400,80);
+    
+    fill(106, 153, 137);
+    rect(0,150,400,80);
+    for (var i = 0; i < objx.length; i++){
+        objx[i] -= 3;
+        
+        if(i === 0){
+           fill(45, 48, 0);
+            rect(objx[i],0,50,150);
+            fill(1, 64, 50);
+            ellipse(objx[i]-10,15,75,75);
+            ellipse(objx[i]+ 20,15,75,75);
+            ellipse(objx[i]+ 80,15,75,75);
+        }else{
+            fill(45, 48, 0);
+            rect(objx[i],0,50,150);
+            fill(1, 64, 50);
+            ellipse(objx[i]-10,15,75,75);
+            ellipse(objx[i]+ 20,15,75,75);
+            ellipse(objx[i]+ 80,15,75,75);
+            fill(229, 237, 220);
+            rect(objx[i]+50,110,60,10);
+            fill(172, 255, 133);
+            rect(objx[i]+50,100,50,50);
+            fill(23, 43, 0);
+            rect(objx[i]+50,95,50,10);
+            rect(objx[i]+60,120,10,10);
+             rect(objx[i]+80,120,10,10);
+     
+        }
+        if (objx[i] < -50){
+            objx[i] = 400;
+        }
+    
+    }
+
+    }
+    stroke(0, 0, 0);
 };
 function playerIcon(y){//this will be used to control the players y-coord position and icon
   //creating the car icon  
@@ -150,26 +258,38 @@ function showObs(){//to show the obstacles multiple times throughout the game
        var y = lanesY[sObsLane[i]];//the y-coord of the obstacle will now correspond with the randomly chosen lane
        if (terrain === "museum"){//creating different obstacles per terrain theme
        if (sObs[i] === "ob1"){//creating the first obstacle
-            fill(255, 0, 0);
+            fill(78, 194, 180);
+            stroke(84, 61, 12);
+            strokeWeight(5);
+            rect(sObsXPos[i],y,40,40);
+            strokeWeight(1);
        }else if (sObs[i] === "ob2"){//checking if the obstacle is the second one and if so creating the second obstacle
-            fill(0, 255, 119);
+            fill(255, 178, 227);
+            stroke(84, 61, 12);
+            strokeWeight(8);
+            rect(sObsXPos[i],y,40,40);
+            strokeWeight(1);
        }
        }
         if (terrain === "greece"){//checking if terrain is greece
        if (sObs[i] === "ob1"){//checking if it is first obstacle
-            fill(255, 0, 242);
+             fill(255, 216, 87);
+            rect(sObsXPos[i],y,40,40);
        }else if (sObs[i] === "ob2"){//checking if it is second obstacle
-            fill(0, 17, 255);
+             fill(255, 249, 158);
+            rect(sObsXPos[i],y,40,40);
        }
        }
        if (terrain === "scary"){//if obstacle is haunted theme
        if (sObs[i] === "ob1"){//checking if it is first obstacle and making it
-            fill(255, 196, 240);
+            fill(28, 87, 31);
+            rect(sObsXPos[i],y,40,40);
        }else if (sObs[i] === "ob2"){//checking if it is second obstacle and then making it
-            fill(136, 0, 255);
+            fill(181, 26, 67);
+            rect(sObsXPos[i],y,40,40);
        }
        }
-       rect(sObsXPos[i],y,40,40);//making the obstacles position and size
+
 
        //this is to check for collision of obstacle and player
        var obsX = sObsXPos[i];//obstacle x will be the x-coord of the randomized obstacle
@@ -219,7 +339,7 @@ function displayGame(){//to display the actual game that will be played
 function displayOver(){//to display the game over scene
     background(255, 25, 117);
     if (terrain === "museum"){//checking if the terrain was museum
-        endMsg = "You knocked over a\nmultimillion dollar artifact\nhave fun paying the fine!";//displaying an ending message for the museum terrain
+        endMsg = "You ruined a\nmultimillion dollar painting\nhave fun paying the fine!";//displaying an ending message for the museum terrain
     }else if (terrain === "greece"){//checking if terrain is Greece
         endMsg = "you desynced :(\nthe flow of time has changed\nsocrates is now a soundcloud rapper\nwith 2 followers\n";//displaying ending message for this terrain
     }else if (terrain === "scary"){//if the terrain chosen was the haunted terrain
@@ -242,15 +362,16 @@ function displayOver(){//to display the game over scene
 function displaymsg(){//to display the message scene to provide context for each terrain
     background(251, 239, 252);
     if (terrain === "museum"){//if terrain is museum
-        msg = "You have stolen a billion dollar artifact\nto avoid paying more fees\ndon't break anything while escaping";//showing museum message
+       msg = "You have stolen a \nbillion dollar artifact\nto avoid \npaying more fees\ndon't break any \npaintings while escaping";//showing museum message
     }
     else if (terrain === "greece"){//if terrain is greece
-        msg = "You traveled back in time congratulations!\nembark on an epic Odyssey\n beware: do not disrupt the space time continuum";//showing corresponding message
+msg = "You traveled back in time \ncongratulations!\nembark on an epic Odyssey\n beware: do not disrupt the \nspace time continuum \nby touching objects\neven touching a rock can change\nthe universe";//showing corresponding message
     }
     else if (terrain === "scary"){//if terrain is haunted
-        msg = "Thou hast been located in a haunted forest\nstrike not the monsters\nlest ye desire them to strike thee";//showing haunted terrain message
+        msg = "Thou hast been located \nin a haunted forest\nthou must not strike any bushes\nor suspicious objects\nlest they be monsters in disguise";//showing haunted terrain message
     }
-    text(msg + "\n Click to confirm",50,50);//displaying the message
+  textSize(20);
+    text(msg + "\n Click to confirm",6,50);//displaying the message
 };
 function reset(){//this will reset things so that if user replays they do not have any unfit values
     playerY = 1;//resetting player y to starting lane
