@@ -78,7 +78,7 @@ function displaySelect(){//to display a menu for user to select vehicle and terr
     
 };
 function lanes(){//this will be used to display each lane in the game
-   if(terrain === "mueseum"){
+   if(terrain === "museum"){
     background(217, 240, 255);
     fill(247, 253, 255);
     rect(0,230,400,80);
