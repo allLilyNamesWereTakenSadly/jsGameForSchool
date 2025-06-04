@@ -4,7 +4,7 @@ Create a game which will go through different scenes where the gameplay is contr
 //*IF THE BOXES ARE ON THE LANES LINES PLEASE REFRESH
 var scenes = "menu";//this will change scenes throughout the game, it will start at menu as it is the first scene to be shown
 var vehicle = "";//this will be used to select a vehicle, it will be empty to show whether a vehicle has been selected
-var terrain = "museum";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected
+var terrain = "museum";//simillar to the vehicle variable above, this will be used to check if a terrain has been selected, it will start as a terrain has to be chosen to show lane
 var playerY = 1;//this will be used to see which lane the player is on, it will start at 1 as arrays start counting at 0, so the player will spawn in the middle
 //arrays are used as they are similar to java arrays however, I double checked with https://www.w3schools.com/js/js_arrays.asp
 var lanesY = [150,250,350];//these will be the points of the lanes that will be used
@@ -91,8 +91,8 @@ function lanes(){//this will be used to display each lane in the game
     rect(0,150,400,80);
     
   //since the bg objects need to repeat a loop is used to alternate between two options for x-coord in array
-    for (var i = 0; i < objx.length; i++){
-        objx[i] -= 3;//decreasing the x-coord of obstacle
+    for (var i = 0; i < 2; i++){
+        objx[i] -= 6;//decreasing the x-coord of obstacle, it will move fast to look like icon is going very fast
         if(i % 2 === 0){//as it needs to alternate between obstacles if it is even it will show option 1
           //creating a very realistic Starry Night
             fill(237, 250, 255);
@@ -148,8 +148,8 @@ function lanes(){//this will be used to display each lane in the game
     rect(0,150,400,80);
     
     
-    for (var i = 0; i < objx.length; i++){//choosing options for object spawining
-        objx[i] -= 3;//decreasing x position of object
+    for (var i = 0; i < 2; i++){//choosing options for object spawining
+        objx[i] -= 6;//decreasing x position of object
         
         if(i % 2 === 0){
           //creating an arch with water and a temple
@@ -202,8 +202,8 @@ function lanes(){//this will be used to display each lane in the game
     
     fill(106, 153, 137);
     rect(0,150,400,80);
-    for (var i = 0; i < objx.length; i++){//to loop between two options
-        objx[i] -= 3;//decreasing x position
+    for (var i = 0; i < 2; i++){//to loop between two options
+        objx[i] -= 6;//decreasing x position
         
         if(i % 2 === 0){//checking if option is even and choosing the first option
           //creating a tree
@@ -424,6 +424,7 @@ function draw(){//this will act as a main menu that will call each function acco
 //to make a key pressed function //https://p5js.org/tutorials/organizing-code-with-functions/
 function keyPressed(){//to check if a specific key has been pressed
     //keycode from https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript - used to check which key has been pressed
+  //https://www.toptal.com/developers/keycode - to find specific keys code
     if (scenes === "game"){//ensuring this will only happen during the game scene
         if ((keyCode === 38 || keyCode === 87) && playerY > 0){ //checking if user has entered either the up arrow key or the 'w' key and their y-coord is not the last lane as they would then be able to infinitley go downwards
             playerY--;//moving players y-coord down by 1
