@@ -270,13 +270,13 @@ function showObs(){//to show the obstacles multiple times throughout the game
        sObsXPos[i] -= 5;//this will decrease the x-coord of the obstacle at a rate of 5 per second so that it is a medium difficulty
        var y = lanesY[sObsLane[i]];//the y-coord of the obstacle will now correspond with the randomly chosen lane
        if (terrain === "museum"){//creating different obstacles per terrain theme
-       if (sObs[i] === "ob1"){//creating the first obstacle
+       if (sObs[i] === "ob1"){//creating the first painting obstacle
             fill(78, 194, 180);
             stroke(84, 61, 12);
             strokeWeight(5);
             rect(sObsXPos[i],y,40,40);
             strokeWeight(1);
-       }else if (sObs[i] === "ob2"){//checking if the obstacle is the second one and if so creating the second obstacle
+       }else if (sObs[i] === "ob2"){//checking if the obstacle is the second one and if so creating the second obstacle painting
             fill(255, 178, 227);
             stroke(84, 61, 12);
             strokeWeight(8);
@@ -285,19 +285,19 @@ function showObs(){//to show the obstacles multiple times throughout the game
        }
        }
         if (terrain === "greece"){//checking if terrain is greece
-       if (sObs[i] === "ob1"){//checking if it is first obstacle
+       if (sObs[i] === "ob1"){//checking if it is first obstacle rock
              fill(255, 216, 87);
             rect(sObsXPos[i],y,40,40);
-       }else if (sObs[i] === "ob2"){//checking if it is second obstacle
+       }else if (sObs[i] === "ob2"){//checking if it is second obstacle and creating second obstacle rock
              fill(255, 249, 158);
             rect(sObsXPos[i],y,40,40);
        }
        }
        if (terrain === "haunted"){//if obstacle is haunted theme
-       if (sObs[i] === "ob1"){//checking if it is first obstacle and making it
+       if (sObs[i] === "ob1"){//checking if it is first obstacle bushes and making it 
             fill(28, 87, 31);
             rect(sObsXPos[i],y,40,40);
-       }else if (sObs[i] === "ob2"){//checking if it is second obstacle and then making it
+       }else if (sObs[i] === "ob2"){//checking if it is second obstacle suspicious object and then making it
             fill(181, 26, 67);
             rect(sObsXPos[i],y,40,40);
        }
@@ -317,7 +317,7 @@ function showObs(){//to show the obstacles multiple times throughout the game
    for (var j = sObs.length - 1; j >= 0; j--){//this will be used to remove used obstacles from the array
      //this checks the oldest thing added (the second thing in array) as it is oldest and needs to go (not the newest that was just added due to opened availability)
        if (sObsXPos[j] < -10){//this will check its x-coord, it will check for -10 as if it were 0 then obstacles would spawn far too quickly, this gives time between new obstacles so player can move
-           //https://www.w3schools.com/jsref/jsref_splice.asp 
+           //https://www.w3schools.com/jsref/jsref_splice.asp - to remove items from array
            sObs.splice(j);//taking away the used selected obstacle
            sObsXPos.splice(j);//taking away the corresponding x-coord (as it will be the same position in array as the obstacle)
            score++;//increasing the score as user has passed an obstacle, it will increase 1 point per group of obstacle x-coord, it needs the y-coord or lane information which is why it goes first
