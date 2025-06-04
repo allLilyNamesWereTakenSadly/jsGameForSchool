@@ -16,8 +16,7 @@ var sObsLane = [];//to find and control the lane of the obstacle
 var sObsXPos = [];//to find the x-coord of the obstacle to check for collision with the player
 var msg = "";//to display a message for context at the beggining of each game
 var endMsg = "";//to display and ending message when game is over
-var BgObjx = 400;
-var objx = [70,300]; 
+var objx = [70,300]; //to choose two different spawn points for objects
 //functions work differently for different versions https://www.w3schools.com/js/js_functions.asp
 //https://www.geeksforgeeks.org/p5-js-setup-function/
 function setup(){//this is a function to set up the canvas on which the game will be displayed
@@ -27,7 +26,7 @@ function displayMenu(){//this will be used to display the menu (first scene) of 
     background(255, 219, 233);//setting the background color
     textSize(40); //creating the text size for what is to be shown until the text size should change
     fill(255,255,255);//creating color for the aforementioned text
-    text("Game!!",110,140);//displaying game title
+    text("Very Fun Game",110,140);//displaying game title
     
     textSize(25);//changing text size as the rest of the text should not be as big as the title
     text("Click to start!!",100,250);//telling user what to do
@@ -55,7 +54,7 @@ function displaySelect(){//to display a menu for user to select vehicle and terr
     rect(230,100,85,85);
     fill(255, 194, 194);
     text("Yellow",250,157);
-    //box to choose museum heistas terrain theme
+    //box to choose museum as terrain theme
     fill(255, 242, 255);
     rect(30,220,85,85);
     fill(255, 194, 194);
@@ -79,7 +78,8 @@ function displaySelect(){//to display a menu for user to select vehicle and terr
 };
 function lanes(){//this will be used to display each lane in the game
    if(terrain === "museum"){
-    background(217, 240, 255);
+    background(217, 240, 255);//bg colour for museum
+     //making each lane independently
     fill(247, 253, 255);
     rect(0,230,400,80);
     
@@ -90,22 +90,27 @@ function lanes(){//this will be used to display each lane in the game
     fill(247, 253, 255);
     rect(0,150,400,80);
     
-
+  //since the bg objects need to repeat a loop is used to alternate between two options for x-coord in array
     for (var i = 0; i < objx.length; i++){
-        objx[i] -= 3;
-        if(i === 0){
+        objx[i] -= 3;//decreasing the x-coord of obstacle
+        if(i % 2 === 0){//as it needs to alternate between obstacles if it is even it will show option 1
+          //creating a very realistic Starry Night
             fill(237, 250, 255);
             rect(objx[i]+ 100,0,50,150);
+          //making painting border
             fill(0, 55, 173);
             stroke(140, 105, 8);
             strokeWeight(5);
+          //making the cypress tree
             rect(objx[i],50,75,75);
             strokeWeight(1);
             fill(0, 17, 84);
             rect(objx[i],75,20,50);
+          //making the moon
             fill(252, 225, 75);
             ellipse(objx[i] + 50,75,20,20);
-        }else{
+        }else{//if it is not the first option then it will display the second object
+          //creating a very realistic Mona Lisa
             fill(237, 250, 255);
             rect(objx[i]+ 100,0,50,150);
             fill(145, 158, 0);
@@ -122,17 +127,20 @@ function lanes(){//this will be used to display each lane in the game
               fill(139, 168, 52);
               ellipse(objx[i] + 30,115,40,20);
         }
+      //checking is object has gone off screen
         if (objx[i] < -50){
+          //resetting the x-coord so it spawns again
             objx[i] = 400;
         }
     }
     }
+     //checking if terrain is odyssey themed and if so, displaying terrain specific objects
     else if(terrain === "greece"){
-        background(255, 240, 209);
+        background(255, 240, 209);//setting bg colour
+      //creating each lane individually
     fill(235, 230, 191);
     rect(0,230,400,80);
-    
-    
+
     fill(235, 230, 191);
     rect(0,311,400,80);
     
@@ -140,10 +148,11 @@ function lanes(){//this will be used to display each lane in the game
     rect(0,150,400,80);
     
     
-    for (var i = 0; i < objx.length; i++){
-        objx[i] -= 3;
+    for (var i = 0; i < objx.length; i++){//choosing options for object spawining
+        objx[i] -= 3;//decreasing x position of object
         
-        if(i === 0){
+        if(i % 2 === 0){
+          //creating an arch with water and a temple
          fill(161, 199, 255);
             rect(objx[i],50,150,100); 
             noStroke();
@@ -160,7 +169,8 @@ function lanes(){//this will be used to display each lane in the game
             rect(objx[i]+140,50,5,50);
             rect(objx[i]+80,35,62,17);
             
-        }else{
+        }else{//creating the second option
+          //creating an arch with water
              fill(161, 199, 255);
             rect(objx[i],50,150,100); 
             noStroke();
@@ -171,16 +181,18 @@ function lanes(){//this will be used to display each lane in the game
             rect(objx[i],100,150,50); 
             
         }
-        if (objx[i] < -50){
-            objx[i] = 400;
+        if (objx[i] < -50){//checking if object has gone off screen
+            objx[i] = 400;//resetting object
         }
     }
     }
     
-    else if(terrain === "haunted"){
-    background(0, 82, 78);
+    else if(terrain === "haunted"){//checking if theme is haunted forest
+    background(0, 82, 78);//changing background
+      //creating a moon
     fill(242, 255, 255);
     ellipse(350,35,75,75);
+    //creating 3 lanes
     fill(106, 153, 137);
     rect(0,230,400,80);
     
@@ -190,17 +202,19 @@ function lanes(){//this will be used to display each lane in the game
     
     fill(106, 153, 137);
     rect(0,150,400,80);
-    for (var i = 0; i < objx.length; i++){
-        objx[i] -= 3;
+    for (var i = 0; i < objx.length; i++){//to loop between two options
+        objx[i] -= 3;//decreasing x position
         
-        if(i === 0){
-           fill(45, 48, 0);
+        if(i % 2 === 0){//checking if option is even and choosing the first option
+          //creating a tree
+          fill(45, 48, 0);
             rect(objx[i],0,50,150);
             fill(1, 64, 50);
             ellipse(objx[i]-10,15,75,75);
             ellipse(objx[i]+ 20,15,75,75);
             ellipse(objx[i]+ 80,15,75,75);
-        }else{
+        }else{//if it is odd and so it is the second object to be displayed
+          //creating a tree with Frankenstein's monster hiding
             fill(45, 48, 0);
             rect(objx[i],0,50,150);
             fill(1, 64, 50);
@@ -217,14 +231,14 @@ function lanes(){//this will be used to display each lane in the game
              rect(objx[i]+80,120,10,10);
      
         }
-        if (objx[i] < -50){
-            objx[i] = 400;
+        if (objx[i] < -50){//checking if object has passed
+            objx[i] = 400;//resetting object
         }
     
     }
 
     }
-    stroke(0, 0, 0);
+    stroke(0, 0, 0);//resetting stroke colour
 };
 function playerIcon(y){//this will be used to control the players y-coord position and icon
   //creating the red icon  
@@ -345,6 +359,7 @@ function displayOver(){//to display the game over scene
     }else if (terrain === "haunted"){//if the terrain chosen was the haunted terrain
         endMsg = "It's alive! It's alive!\nthou hast awoken the \nmonster\nthou shalt feel its wrath";//displaying the message for this terrain
     }
+  
     textSize(30);
     fill(255, 255, 255);
     text("Game over",115,100);//displaying that game is over
@@ -353,7 +368,8 @@ function displayOver(){//to display the game over scene
     text("Your Score:" + score + "\nHigh score: "+ highScore,55,143);//displaying the score
     textSize(17);
     text(endMsg,50,206);//showing the message
-     textSize(30);
+     textSize(30);//changing text size
+  //creating box to prompt user to play again
     fill(255, 255, 255);
     rect(50,332,299,50);
     fill(83, 230, 220);
@@ -370,7 +386,7 @@ msg = "You traveled back in time \ncongratulations!\nembark on an epic Odyssey\n
     else if (terrain === "haunted"){//if terrain is haunted
         msg = "Thou hast been located \nin a haunted forest\nthou must not strike any bushes\nor suspicious objects\nlest they be monsters in disguise";//showing haunted terrain message
     }
-  textSize(20);
+  textSize(20);//changing text size
     text(msg + "\n Click to confirm",6,50);//displaying the message
 };
 function reset(){//this will reset things so that if user replays they do not have any unfit values
