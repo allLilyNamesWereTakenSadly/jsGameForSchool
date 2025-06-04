@@ -1,5 +1,5 @@
 /*Lily Swan-Tuomi
-May 29 2025
+June 3rd, 2025
 Create a game which will go through different scenes where the gameplay is controlling a vehicle with different options for vehicle and terrain*/
 var scenes = "menu";//this will change scenes throughout the game, it will start at menu as it is the first scene to be shown
 var vehicle = "";//this will be used to select a vehicle, it will be empty to show whether a vehicle has been selected
